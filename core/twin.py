@@ -1,17 +1,19 @@
 """
-THE DIGITAL TWIN — Master Orchestrator
+BEM — Bandwidth Expander Model — Master Orchestrator
 
-This is Josh's cognitive architecture in code.
-It doesn't wait to be asked. It thinks, learns, and acts.
+Josh's cognitive architecture in code.
+Not a digital twin. Not a copy. An EXTENSION.
+A wider pipe for a brain that thinks faster than it can type.
 
 Architecture:
   Identity Graph → who Josh is, what he knows, how things connect
   Reasoning Engine → thinks like Josh (gut-first, parallel, OODA)
   Learning Engine → gets smarter with every interaction
   Action Engine → proactively identifies what needs to happen
+  Bandwidth Engine → measures and optimizes the expansion
+  Emergence Engine → sees structural patterns Josh can't hold in working memory
 
-The twin is the convergence of all engines.
-One interface. One mind. One direction.
+One interface. One mind. One wider pipe.
 """
 
 import json
@@ -31,12 +33,12 @@ from engines.meta_theory import MetaTheory
 from engines.emergent_theory import EmergentTheory
 
 
-class DigitalTwin:
+class BEM:
     """
-    Josh's digital twin.
+    Bandwidth Expander Model — Josh's cognitive extension.
 
-    Not a chatbot. Not an assistant. A cognitive architecture
-    that mirrors how Josh thinks, decides, and acts.
+    Not a copy. Not a mirror. A wider pipe.
+    The brain thinks. The BEM transmits.
     """
 
     def __init__(self):
