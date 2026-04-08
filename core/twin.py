@@ -31,6 +31,10 @@ from engines.action import ActionEngine
 from engines.bandwidth_expander import BandwidthExpander
 from engines.meta_theory import MetaTheory
 from engines.emergent_theory import EmergentTheory
+from engines.session_bridge import SessionBridge
+from engines.domain_router import DomainRouter
+from engines.recursive_theory import RecursiveTheory
+from engines.cortex_bridge import CortexBridge
 
 
 class BEM:
@@ -49,6 +53,10 @@ class BEM:
         self.bandwidth = BandwidthExpander(self.graph)
         self.meta_theory = MetaTheory(self.graph)
         self.emergent = EmergentTheory(self.graph)
+        self.session_bridge = SessionBridge(self.graph)
+        self.domain_router = DomainRouter(self.graph)
+        self.recursive_theory = RecursiveTheory(self.graph)
+        self.cortex_bridge = CortexBridge(self.graph)
         self.state_path = Path(os.path.expanduser("~/digital-twin/data/twin_state.json"))
 
         # Load or init state
