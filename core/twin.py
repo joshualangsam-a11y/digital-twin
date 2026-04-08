@@ -26,6 +26,9 @@ from core.identity_graph import IdentityGraph
 from engines.reasoning import ReasoningEngine
 from engines.learning import LearningEngine
 from engines.action import ActionEngine
+from engines.bandwidth_expander import BandwidthExpander
+from engines.meta_theory import MetaTheory
+from engines.emergent_theory import EmergentTheory
 
 
 class DigitalTwin:
@@ -41,6 +44,9 @@ class DigitalTwin:
         self.reasoning = ReasoningEngine(self.graph)
         self.learning = LearningEngine(self.graph)
         self.action = ActionEngine(self.graph)
+        self.bandwidth = BandwidthExpander(self.graph)
+        self.meta_theory = MetaTheory(self.graph)
+        self.emergent = EmergentTheory(self.graph)
         self.state_path = Path(os.path.expanduser("~/digital-twin/data/twin_state.json"))
 
         # Load or init state
@@ -174,6 +180,38 @@ class DigitalTwin:
             "priorities": priorities[:5],
             "urgent_actions": urgent,
             "compound_report": self.learning.compound_report(),
+        }
+
+    def observe(self, terminals: list[dict] = None, agents: list[dict] = None) -> dict:
+        """
+        Observe the current multi-session topology and discover new theory.
+        This is the recursive loop: the twin observes itself being used
+        and generates new mechanisms from that observation.
+        """
+        terminals = terminals or []
+        agents = agents or []
+
+        discoveries = self.emergent.observe_session_topology(terminals, agents)
+        topology = self.emergent.current_topology()
+
+        self.state["total_learnings"] += len(discoveries)
+        self._save_state()
+
+        return {
+            "discoveries": discoveries,
+            "total_mechanisms": topology["total"],
+            "status": topology["status"],
+        }
+
+    def theory_status(self) -> dict:
+        """How many BEM mechanisms have we discovered?"""
+        meta = self.meta_theory.theory_status()
+        emergent = self.emergent.current_topology()
+        return {
+            "paper": 5,
+            "meta_theory": meta["discovered_mechanisms"],
+            "emergent": len(emergent["emergent_mechanisms"]),
+            "total": emergent["total"],
         }
 
     def status(self) -> dict:
