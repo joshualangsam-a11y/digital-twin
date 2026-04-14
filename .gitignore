@@ -3,3 +3,6 @@ __pycache__/
 .env
 data/
 *.jsonl
+CLAUDE.md
+AGENTS.md
+.claude/
