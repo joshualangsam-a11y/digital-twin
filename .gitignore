@@ -6,3 +6,4 @@ data/
 CLAUDE.md
 AGENTS.md
 .claude/
+.metadata_never_index
